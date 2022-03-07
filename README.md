@@ -5,18 +5,18 @@
 Спульте проект:
 
 ```
-git pull git@github.com:GreenMelissa/TestSymfonyProject.git
+git clone git@github.com:GreenMelissa/TestSymfonyProject.git
+```
+
+Настройте соединение с базой в файле **.env**
+```
+DATABASE_URL="mysql://db_user:db_password@127.0.0.1:3306/db_name"
 ```
 
 Установите пакеты:
 
 ```
 composer install
-```
-
-Настройте соединение с базой в файле **.env**
-```
-DATABASE_URL="mysql://db_user:db_password@127.0.0.1:3306/db_name"
 ```
 
 Загрузите тестовые данные для БД
@@ -42,5 +42,3 @@ symfony server:start
 ```
 
 Сайт будет доступен по адресу http://localhost:8000
-
-
