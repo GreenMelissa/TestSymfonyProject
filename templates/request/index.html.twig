@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Список заявок
+{% endblock %}
+
+{% block body %}
+    <h2>Список заявок</h2>
+    {% if app.user %}
+        <a class="btn btn-primary" href="{{ path('create_request') }}">Создать заявку</a>
+    {% endif %}
+    {% if requests %}
+        <table class="table">
+            <thead>
+                <th scope="col">Заголовок</th>
+                <th scope="col">Дата создания</th>
+                <th scope="col">Статус</th>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <th scope="col">Действия</th>
+                {% endif %}
+            </thead>
+            <tbody>
+                {% for request in requests %}
+                    <tr class="{{ request.isRequiredApproval ? 'bg-danger' : '' }}">
+                        <td>{{ request.title }}</td>
+                        <td>{{ request.createdAt |date('d-m-Y H:i') }}</td>
+                        <td>
+                            {{ request.statusLabel }}
+                        </td>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <td>
+                                <a href="{{ path('update_request', {'id': request.id}) }}">Редактировать</a>
+                            </td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        В системе нет созданных заявок
+    {% endif %}
+{% endblock %}

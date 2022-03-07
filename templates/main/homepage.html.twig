@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Домашняя страница
+{% endblock %}
+
+{% block body %}
+    <div class="text-center">
+        <h1>Домашняя страница</h1>
+        {% if app.user %}
+            <div>
+                Добро пожаловать,  {{ app.user.username }}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{# templates/request/create.html.twig #}
+{% extends 'base.html.twig' %}
+{% block title %}
+    Редактирование заявки
+{% endblock %}
+{% block body %}
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <h2>Редактирование заявки</h2>
+            {{ include('request/form.html.twig') }}
+        </div>
+    </div>
+{% endblock %}
